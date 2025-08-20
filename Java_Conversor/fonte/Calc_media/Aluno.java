@@ -1,4 +1,4 @@
-
+package Java_Conversor.fonte.Calc_media;
 public class Aluno {
     private String nome;
     private double nota1;
