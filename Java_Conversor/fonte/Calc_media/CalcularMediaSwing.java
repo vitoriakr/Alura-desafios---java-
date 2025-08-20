@@ -1,13 +1,13 @@
-package Java_Conversor.fonte.Calc_media;
+package Calc_media;
 
 import javax.swing.*;
 
-public class CalcularMediaSwingg extends JFrame {
+public class CalcularMediaSwing extends JFrame {
 
     private JTextField txtnome, txtnota1, txtnota2, txtnota3;
     private JTextArea txtresultado;
 
-    public CalcularMediaSwingg(){
+    public CalcularMediaSwing(){
         // Configuração da janela
         setTitle("Calcular Média");
         setSize(300,250);

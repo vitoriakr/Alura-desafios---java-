@@ -1,4 +1,4 @@
-package Java_Conversor.fonte.RegistroVoto;
+package RegistroVoto;
 import java.awt.*;
 import java.io.BufferedWriter;
 

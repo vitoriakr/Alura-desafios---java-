@@ -1,4 +1,4 @@
-package Java_Conversor.fonte.Converter;
+package Converter;
 import javax.swing.*;
 
 import java.awt.*;
