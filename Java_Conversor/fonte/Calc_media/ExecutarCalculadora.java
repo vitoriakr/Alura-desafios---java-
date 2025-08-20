@@ -1,4 +1,4 @@
-package Java_Conversor.fonte.Calc_media;
+package Java_Conversor.fonte.calc_media;
 
 public class ExecutarCalculadora {
 
