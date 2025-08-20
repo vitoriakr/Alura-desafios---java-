@@ -1,5 +1,6 @@
 
 import java.awt.*;
+import java.io.BufferedWriter;
 
 import javax.swing.*;
 
@@ -90,24 +91,34 @@ public class SistemaVotacao extends JFrame {
         
     }
     private void exibirResultado() {
-        String resultado = "Resultado da Votação:\n"+
-        "Candidato A: " + votos[0] + " votos\n"+
-        "Candidato B: " + votos[1] + " votos\n"+
-        "Candidato C: " + votos[2] + " votos\n"+
-        "Candidato D: " + votos[3] + " votos\n";
-
-        JOptionPane.showMessageDialog(null, resultado, "Resultado", JOptionPane.INFORMATION_MESSAGE);
+        String resultado = "Resultados:\n" +
+                "Candidato A: " + votos[0] + "\n" +
+                "Candidato B: " + votos[1] + "\n" +
+                "Candidato C: " + votos[2] + "\n" +
+                "Candidato D: " + votos[3];
+        JOptionPane.showMessageDialog(this, resultado, "Relatório de Votos",
+        JOptionPane.INFORMATION_MESSAGE);
     }
-    private void encerrarVotacao() {
-        int confirmar = JOptionPane.showConfirmDialog(null,
-        "Deseja encerrar a votação?",
-        "Confirmação", JOptionPane.YES_NO_OPTION);// Exibe uma mensagem de confirmação
 
-        if (confirmar == JOptionPane.YES_OPTION) {
-            System.exit(0);// Encerra o programa
+    private void encerrarVotacao() {
+        try (BufferedWriter gravar = new BufferedWriter(new java.io.FileWriter("resultado.txt"))) {
+            gravar.write("Resultados Finais:\n Candidato A: " + votos[0] + "\n" +
+                    "Candidato B: " + votos[1] + "\n" +
+                    "Candidato C: " + votos[2] + "\n" +
+                    "Candidato D: " + votos[3]);
+
+                    labelResultado.setText("A = 0, B = 0, C = 0, D = 0");
+                    JOptionPane.showMessageDialog(null,
+                    "Encerramento da Votação. Votos salvos!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao salvar os resultados: " + e.getMessage(),
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            System.exit(0); // Encerra o programa
         }
     }
-        
+
     public static void main(String[] args) {
         new SistemaVotacao();
     }
